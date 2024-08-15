@@ -1,0 +1,17 @@
+.column1{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: black;    
+}
+
+.row1{
+    display : flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+  
+  }
