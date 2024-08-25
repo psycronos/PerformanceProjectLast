@@ -8,9 +8,15 @@ import DailySchedule from "./Components/DailySchedule/DailySchedule";
 import TotalSchedule from "./Components/TotalSchedule/TotalSchedule";
 import { useSelector, useDispatch } from "react-redux";
 import { resetState } from "./Store/timeSlice";
+import React from "react";
+import axios from "axios";
+
+import { days, workingHours } from "./Store/timeSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const workingHours1 = useSelector(workingHours);
+  const daysObject = useSelector(days);
 
   return (
     <>
@@ -32,6 +38,17 @@ function App() {
         }}
       >
         Saatleri Temizle
+      </button>
+
+      <button
+        onClick={() => {
+          axios.post("http://localhost:8083/api/time/echo", { workingHours1, daysObject }).then((res) => {
+            console.log(res);
+            console.log(res.data);
+          });
+        }}
+      >
+        Calculate Time
       </button>
     </>
   );
