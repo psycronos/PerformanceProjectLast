@@ -11,7 +11,12 @@ import duration from "dayjs/plugin/duration"; // Duration eklentisi
 
 //---------------------------------/
 import { useSelector, useDispatch } from "react-redux";
-import { days, addBeginTime, addEndTime, removeTimeAfterN } from "../../Store/timeSlice";
+import {
+  days,
+  addBeginTime,
+  addEndTime,
+  removeTimeAfterN,
+} from "../../Store/timeSlice";
 
 dayjs.extend(duration);
 
@@ -101,7 +106,12 @@ const InputTime = ({ day, n, isDisabled = false }) => {
         label={n + 1 + ". Giriş Var mı?"}
         labelPlacement="start"
       />
-      {isChecked ? <InputTime n={n + 1} day={day} isDisabled={isDisabled}></InputTime> : <></>} {/** InputTime içerisinde birtane daha InputTime çağırılıyor bu sayede iç içe birden çok component çağırılıyor */}
+      {isChecked ? (
+        <InputTime n={n + 1} day={day} isDisabled={isDisabled}></InputTime>
+      ) : (
+        <></>
+      )}{" "}
+      {/** InputTime içerisinde birtane daha InputTime çağırılıyor bu sayede iç içe birden çok component çağırılıyor */}
     </div>
   );
 };
